@@ -10,7 +10,8 @@ Keep the skill portable. Do not write instructions that limit it to one or two a
 
 ## Key files
 
-- `SKILL.md` is the source of truth and the repo's only skill file. It contains portable YAML metadata, an account of why AI text sounds the way it does, and numbered patterns grouped in six sections and ordered by strength and frequency.
+- `SKILL.md` is the source of truth and the repo's only skill file. It routes some texts to the guides in `references/`. It contains portable YAML metadata, an account of why AI text sounds the way it does, and numbered patterns grouped in six sections and ordered by strength and frequency.
+- `references/` holds guides that `SKILL.md` routes to for one language or format: `thai.md`, `email-and-chat.md`, and `slides.md`. An agent reads a guide only when the text calls for it.
 - `README.md` explains installation, use, and patterns.
 - `CHANGELOG.md` holds the release notes, newest first. Old notes keep the pattern numbers their release used.
 - `.claude-plugin/plugin.json` describes the Claude plugin and points its skill loader at the root `SKILL.md`.
@@ -27,6 +28,7 @@ Keep `SKILL.md` and `README.md` in sync.
 - **Version:** Keep the same version in `SKILL.md` under `metadata.version`, the first `CHANGELOG.md` heading, `.claude-plugin/plugin.json`, and `.cursor-plugin/plugin.json`. Do not add a top-level `version` field to the skill.
 - **Compatibility:** Keep install and use instructions neutral across agents. Names such as Claude Code, Cursor, OpenCode, and Codex are examples, not limits.
 - **Description:** The plugin manifests use the first sentence of the `SKILL.md` description.
+- **Guides:** A guide in `references/` adds tells for one language or format and must be named in the routing table in `SKILL.md`. Number its tells with one letter of its own (T1 for Thai, E1 for messages, S1 for slides) so they never look like core patterns, and use the Watch for, Problem, Before, After format. Prefer pointing to a core pattern (§N) over restating it. The validator caps each guide at 2,500 words.
 - **Length:** Every word of `SKILL.md` is read on each use. The validator caps it at 5,500 words; a change that adds words should earn them.
 - **History:** Add a short `CHANGELOG.md` note for any behavior change or non-obvious fix.
 - **Checks:** Before publishing, run `python3 scripts/validate-package.py`, `npx skills add . --list`, and `claude plugin validate .`.

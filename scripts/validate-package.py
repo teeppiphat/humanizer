@@ -143,4 +143,57 @@ skill_words = len(SKILL.split())
 if skill_words > 5500:
     raise SystemExit(f"Keep SKILL.md at 5,500 words or fewer; it has {skill_words}")
 
+# Guides in references/ are read only when SKILL.md routes a text to them, so
+# each one must be named there, and every name there must be a real file.
+REFERENCES = ROOT / "references"
+reference_files = {
+    path.relative_to(ROOT).as_posix(): read_package_file(path)
+    for path in sorted(REFERENCES.glob("*.md"))
+}
+routed = set(re.findall(r"`(references/[a-z0-9-]+\.md)`", SKILL))
+if routed != set(reference_files):
+    raise SystemExit(
+        "Name every references/ guide in SKILL.md, and only real ones: "
+        f"missing from SKILL.md {sorted(set(reference_files) - routed)}, "
+        f"missing files {sorted(routed - set(reference_files))}"
+    )
+
+# Guide tells use a letter prefix (T1, E1, S1) so they never look like core
+# patterns. Each guide uses one prefix, numbered from 1 without gaps.
+tells = {}
+for path, text in reference_files.items():
+    headings = re.findall(r"(?m)^### ([A-Z])([0-9]+)\. .+$", text)
+    if not headings:
+        continue
+    prefixes = {prefix for prefix, _ in headings}
+    numbers = [int(number) for _, number in headings]
+    if len(prefixes) != 1 or numbers != list(range(1, len(numbers) + 1)):
+        raise SystemExit(
+            f"Number the tells in {path} with one letter from 1 upward without gaps: "
+            f"{[prefix + number for prefix, number in headings]}"
+        )
+    prefix = prefixes.pop()
+    if prefix in tells:
+        raise SystemExit(f"Give {path} its own tell letter; {prefix} is already used")
+    tells[prefix] = len(numbers)
+
+for path, text in reference_files.items():
+    bad_patterns = sorted(
+        {int(number) for number in re.findall(r"§([0-9]+)", text)}
+        - set(range(1, pattern_count + 1))
+    )
+    bad_tells = sorted(
+        f"{prefix}{number}"
+        for prefix, number in set(re.findall(r"\b([A-Z])([0-9]+)\b", text))
+        if prefix in tells and not 1 <= int(number) <= tells[prefix]
+    )
+    if bad_patterns or bad_tells:
+        raise SystemExit(
+            f"Point every reference in {path} at a real pattern or tell: "
+            f"{bad_patterns + bad_tells}"
+        )
+    guide_words = len(text.split())
+    if guide_words > 2500:
+        raise SystemExit(f"Keep {path} at 2,500 words or fewer; it has {guide_words}")
+
 print(f"Humanizer package v{skill_version} is valid")

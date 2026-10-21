@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.3.0
+
+- Added `references/email-and-chat.md` for emails and work chat messages, with six tells (E1 to E6): the ask arriving last, stock openers and sign-offs, a short message formatted as a report, register that does not fit the relationship, vague subject lines and asks, and thanks or apologies on every line.
+- Added `references/slides.md` for slide decks, with eight tells (S1 to S8). Decks are reviewed, not edited: the skill returns findings by slide with replacement text and asks for missing numbers or sources.
+- Replaced the "Other languages" note with a table that routes Thai, messages, and decks to their guides, and added a review mode for files that are not plain text.
+- The validator now checks that every guide in `references/` is named in `SKILL.md`, that guide tells are numbered with one letter each, that pattern and tell references resolve, and that each guide stays under 2,500 words. No change to the 26 core patterns.
+
 ## 3.2.0
 
 - Added `references/thai.md`, a guide for Thai text. It maps the core patterns to their Thai forms, reverses §11 because Thai drops subjects, and adds nine Thai tells: a connector before every sentence, stock Thai AI words, pronouns Thai would drop, passives with ถูก and ได้รับการ, padding such as ทำการ and มีความ, English punctuation, word-for-word phrases, register that does not fit the reader, and run-on sentences. No change to the 26 core patterns.
