@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.2.0
+
+- Added `references/thai.md`, a guide for Thai text. It maps the core patterns to their Thai forms, reverses §11 because Thai drops subjects, and adds nine Thai tells: a connector before every sentence, stock Thai AI words, pronouns Thai would drop, passives with ถูก and ได้รับการ, padding such as ทำการ and มีความ, English punctuation, word-for-word phrases, register that does not fit the reader, and run-on sentences. No change to the 26 core patterns.
+- Added an "Other languages" note: rewrite in the source language and read the language guide when one exists.
+
 ## 3.1.0
 
 - Added pattern #26 and section F for replies that re-explain context the reader already has (#269). It acts on replies, not standalone writing. 26 patterns total.
