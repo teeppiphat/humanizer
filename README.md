@@ -27,7 +27,7 @@ These are the most common signs of AI writing, and Humanizer rewrites any of the
 4. **A staged run-up:** "Here's the thing." "Honestly?"
 5. **Arguing with no one:** "I'm not saying X, but..."
 
-Humanizer checks for [26 patterns](#the-26-patterns) in all.
+Humanizer checks for [26 patterns](#the-26-patterns) in all. It also works on [Thai text](#thai-text), with nine extra tells for Thai.
 
 ## Installation
 
@@ -80,6 +80,12 @@ To rewrite a file, give Humanizer its path:
 
 ```
 Humanize the prose in docs/launch-post.md
+```
+
+For Thai, paste the text the same way or ask in Thai. The rewrite stays in Thai:
+
+```
+ช่วยปรับข้อความนี้ให้อ่านเหมือนคนเขียน: [ข้อความ]
 ```
 
 ### Match your voice
