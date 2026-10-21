@@ -169,6 +169,16 @@ The patterns are numbered by strength and frequency. The first five justify an e
 |---|---------|--------|-------|
 | 26 | **Re-explaining what the reader knows** | A reply that walks the diagnosis and proves the plan works before the decision | Lead with the decision; leave the diagnosis and the proof for the ticket that follows |
 
+## Thai text
+
+For Thai, Humanizer reads [`references/thai.md`](references/thai.md). It covers the Thai forms of the core patterns and nine tells that come from carrying English habits into Thai: a connector before every sentence (นอกจากนี้, อย่างไรก็ตาม), pronouns Thai would drop, passives with ถูก, padding such as ทำการ and มีความ, English commas and periods, word-for-word phrases, and a register that does not fit the reader.
+
+**Before:**
+> แอปนี้ใช้งานง่าย นอกจากนี้ยังรองรับหลายภาษา อย่างไรก็ตาม ผู้ใช้บางส่วนพบว่าแบตเตอรี่หมดเร็ว ดังนั้น ทีมพัฒนาจึงได้ออกอัปเดตใหม่
+
+**After:**
+> แอปนี้ใช้ง่ายและรองรับหลายภาษา แต่ผู้ใช้บางคนพบว่าแบตเตอรี่หมดเร็ว ทีมพัฒนาจึงออกอัปเดตใหม่
+
 ## Full example
 
 **Before (AI-sounding):**
