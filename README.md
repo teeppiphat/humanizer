@@ -179,6 +179,20 @@ For Thai, Humanizer reads [`references/thai.md`](references/thai.md). It covers 
 **After:**
 > แอปนี้ใช้ง่ายและรองรับหลายภาษา แต่ผู้ใช้บางคนพบว่าแบตเตอรี่หมดเร็ว ทีมพัฒนาจึงออกอัปเดตใหม่
 
+## Emails and work messages
+
+For an email or a Slack, Teams, or LINE message, Humanizer reads [`references/email-and-chat.md`](references/email-and-chat.md). It puts the ask first and covers six tells: the request buried in the last line, stock openers and sign-offs, a few lines formatted as a report, a register that does not fit the relationship, vague subject lines and asks, and thanks or apologies on every line.
+
+**Before:**
+> Hi Ploy, as you know we've been working on the Q3 report and there have been a few delays with the data from finance. I talked to Krit yesterday and he said the numbers should be ready by Thursday. Because of that, I think we'll need to move the review meeting. Would Friday at 2pm work for you?
+
+**After:**
+> Hi Ploy, can we move the Q3 review to Friday at 2pm? Finance's numbers won't be ready until Thursday.
+
+## Slide decks
+
+For a slide deck, Humanizer reads [`references/slides.md`](references/slides.md) and reviews the deck without changing the file. It returns a table of findings by slide with replacement text ready to paste, and asks for any number or source the deck lacks instead of inventing one. It covers eight tells: template leftovers, titles that name a topic instead of a point, the same layout on every slide, slogans instead of claims, stock slides, numbers and charts without support, decoration, and speaker notes that narrate the slide.
+
 ## Full example
 
 **Before (AI-sounding):**

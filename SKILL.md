@@ -4,11 +4,12 @@ description: |
   Rewrite AI-sounding text so it reads like the writer without changing what it says.
   Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line
   closers, staged openers, forced triads, dashes everywhere, inflated claims, sales
-  language, stock AI words, bold labels, or filler. Also covers Thai text (ภาษาไทย).
+  language, stock AI words, bold labels, or filler. Also covers Thai text (ภาษาไทย),
+  emails and work chat messages, and reviews of slide decks.
   Based on Wikipedia's "Signs of AI writing."
 license: MIT
 metadata:
-  version: "3.2.0"
+  version: "3.3.0"
 ---
 
 # Humanizer: remove AI writing patterns
@@ -45,15 +46,25 @@ If the user gives a writing sample, read it first and match its sentence length,
 
 Without a sample, take the voice from the kind of text. Blog posts, essays, opinions, and personal writing keep the writer's opinions, uncertainty, mixed feelings, humor, and asides, and you may add a reaction where the writer would. Reference, technical, legal, and factual text stays neutral and plain. Removing tells is half the job; the result must still sound like a person.
 
-### Other languages
+### Other languages and formats
 
-Write the rewrite in the language of the source. The patterns hold in every language, but the watch lists are English. For Thai, read `references/thai.md` before marking tells. For another language, look for the local form of each pattern and for English habits carried over by translation: a connector before every sentence, a pronoun in every clause, stiff passives, and English punctuation.
+Write the rewrite in the language of the source. The patterns hold in every language and format, but the watch lists are English prose. Before marking tells, read every guide that fits the text:
+
+| Text | Guide |
+|---|---|
+| Mostly Thai, or Thai mixed with English | `references/thai.md` |
+| An email or a work chat message | `references/email-and-chat.md` |
+| A slide deck, slide outline, or speaker notes | `references/slides.md` |
+
+For another language, look for the local form of each pattern and for English habits carried over by translation: a connector before every sentence, a pronoun in every clause, stiff passives, and English punctuation.
 
 ### What to return
 
 **Pasted text (default).** Return the draft, a short list of remaining patterns, and the final rewrite.
 
 **File mode.** When the user names a file, run the full process but write only the final text to the file. Change prose only. Keep code blocks, inline code, commands, paths, YAML metadata, data, and link targets unchanged. Then give the user a short summary.
+
+**Review mode.** For a slide deck, spreadsheet, or other file that is not plain text, do not change the file. Return the findings and the proposed text, as the matching guide describes.
 
 **Embedded mode.** When another task uses this skill for a pull request, commit message, or document, return only the final text.
 
